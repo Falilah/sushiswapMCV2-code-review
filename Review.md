@@ -34,14 +34,16 @@ The following arrays should be accessed by the same index pid
 
 CONSTRUCTOR: THE ADDRESS OF ALL THE CONTRACT MASTERCHEFV2 will interact with is being set.
 
-/****************\*****************
+/**\*\***\*\*\*\***\*\***\***\*\***\*\*\*\***\*\***
 
 #init function.
 
-@notice Deposits a dummy token to `MASTER_CHEF` MCV1. This is required because MCV1 holds the minting rights for SUSHI.
+        @notice Deposits a dummy token to `MASTER_CHEF` MCV1. This is required because MCV1 holds the minting rights for SUSHI.
+
 Any balance of transaction sender in `dummyToken` is transferred.
 The allocation point for the pool on MCV1 is the total allocation point for all pools that receive double incentives.
-@param dummyToken The address of the ERC-20 token to deposit into MCV1.
+
+        @param dummyToken The address of the ERC-20 token to deposit into MCV1.
 
 Access the balance the user has in the token address he has inputed and made safeTransferFrom from the token contract to masterchefv2.
 approve masterchefv1 to spend the money
@@ -55,15 +57,17 @@ the deposit function of masterchef v1 was interaacted with to get the money in t
         /***** the deposit function called from the masterchefv1 contract which helps to calculate the amount of sushi token to be transfer to the msg.sender, it update the pool ID, it calculate the reward the caller is entitle to also.
         *****************************/
 
-/********************\*\*\*********************
+/**\*\*\*\***\*\*\*\***\*\*\*\***\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***
 
 #Add function
 
-/// @notice Add a new LP to the pool. Can only be called by the owner.
+        @notice Add a new LP to the pool. Can only be called by the owner.
+
 DO NOT add the same LP token more than once. Rewards will be messed up if you do.
-@param allocPoint AP of the new pool.
-@param \_lpToken Address of the LP ERC-20 token.
-@param \_rewarder Address of the rewarder delegate.
+
+        @param allocPoint AP of the new pool.
+        @param \_lpToken Address of the LP ERC-20 token.
+        @param \_rewarder Address of the rewarder delegate.
 
 function add which can only be called by the owner in order to add new liquidity pool to the pool.
 This was done in the following ways:
@@ -77,9 +81,9 @@ This was done in the following ways:
 
         updated the structValue and push them to an Array of struct.
 
-**************\***************/
+**\*\***\*\***\*\***\***\*\***\*\***\*\***/
 
-/************\*************
+/\***\*\*\*\*\*\*\***\*\***\*\*\*\*\*\*\***
 
 #SET FUNCTION.
 
@@ -99,9 +103,9 @@ allocationPoint was also reassigned in the PoolInfo struct using a struct pointe
 
 if overwrite is true rewarder will be set else it won't.
 
-************\*\*\*\*************/
+\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***/
 
-/************\*\*************
+/\***\*\*\*\*\*\*\***\*\*\***\*\*\*\*\*\*\***
 
 #SETMIGRATOR FUNCTION
 
@@ -111,9 +115,9 @@ if overwrite is true rewarder will be set else it won't.
         in this function migrator was set
         migrator is a contract  that deals
 
-******************\*\*\*******************/
+**\*\*\*\***\*\***\*\*\*\***\*\*\***\*\*\*\***\*\***\*\*\*\***/
 
-/**************\*\***************
+/**\*\***\*\***\*\***\*\***\*\***\*\***\*\***
 #migrate
 
         @notice Migrate LP token to another LP contract through the `migrator` contract.
@@ -128,9 +132,9 @@ then the migrate function was called from the migratetor contract.
 
         the migrator contract interact with uniswapV2pair which is the contract incharge of creating new contract for each pair of token using Create2.
 
-******************\*******************/
+**\*\*\*\***\*\***\*\*\*\***\***\*\*\*\***\*\***\*\*\*\***/
 
-/**********\*\***********
+/\***\*\*\*\*\***\*\*\***\*\*\*\*\***
 #pendingSushi
 
         @notice View function to see pending SUSHI on frontend.
@@ -144,25 +148,24 @@ the pending sussshi as display above get the pending sushi token:
         time is calculated to calculate the reward the user is entitle to from the pool.
         all these above information is the used to calculating the amount pending for that users.
 
-**************\*\***************/
-/**********\***********
+**\*\***\*\***\*\***\*\***\*\***\*\***\*\***/
+/\***\*\*\*\*\***\*\***\*\*\*\*\***
 
 #massUpdatePools
 
         @notice Update reward variables for all pools. Be careful of gas spending!
         @param pids Pool IDs of all to be updated. Make sure to update all active pools.
 
-this function basically update the pools in mass as the name implies which called another function named updatePool while looping through each Id in the arrays
-************\*\*\*\*************/
-/**********\*\*\*\***********
+this function basically update the pools in mass as the name implies which called another function named updatePool while looping through each Id in the arrays \***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***/
+/\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***
 
 #sushiPerBlock
 
         @notice Calculates and returns the `amount` of SUSHI per block.
 
-**************\*\***************/
+**\*\***\*\***\*\***\*\***\*\***\*\***\*\***/
 
-/************\*************
+/\***\*\*\*\*\*\*\***\*\***\*\*\*\*\*\*\***
 
 #updatePool
 
@@ -170,8 +173,8 @@ this function basically update the pools in mass as the name implies which calle
         @param pid The index of the pool. See `poolInfo`.
         @return pool Returns the pool that was updated.
 
-**********\*\***********/
-/**********\*\*\*\***********
+\***\*\*\*\*\***\*\*\***\*\*\*\*\***/
+/\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***
 
 #deposit
 
@@ -180,8 +183,8 @@ this function basically update the pools in mass as the name implies which calle
         @param amount LP token amount to deposit.
         @param to The receiver of `amount` deposit benefit.
 
-************\*************/
-/**************\*\*\***************
+\***\*\*\*\*\*\*\***\*\***\*\*\*\*\*\*\***/
+/**\*\***\*\***\*\***\*\*\***\*\***\*\***\*\***
 
 #withdraw
 
@@ -190,9 +193,9 @@ this function basically update the pools in mass as the name implies which calle
         @param amount LP token amount to withdraw.
         @param to Receiver of the LP tokens.
 
-**********************\***********************/
+****\*\*****\*\*****\*\*****\*****\*\*****\*\*****\*\*****/
 
-/******************\*\*******************
+/**\*\*\*\***\*\***\*\*\*\***\*\***\*\*\*\***\*\***\*\*\*\***
 
 #harvest
 
@@ -200,30 +203,30 @@ this function basically update the pools in mass as the name implies which calle
         @param pid The index of the pool. See `poolInfo`.
         @param to Receiver of SUSHI rewards.
 
-******************\*******************/
-/****************\*\*****************
+**\*\*\*\***\*\***\*\*\*\***\***\*\*\*\***\*\***\*\*\*\***/
+/**\*\***\*\*\*\***\*\***\*\***\*\***\*\*\*\***\*\***
 
 #withdrawAndHarvest
 
-harvest proceeds for transaction sender to `to`.
-@param pid The index of the pool. See `poolInfo`.
-@param amount LP token amount to withdraw.
-@param to Receiver of the LP tokens and SUSHI rewards.
+        @notice harvest proceeds for transaction sender to `to`.
+        @param pid The index of the pool. See `poolInfo`.
+        @param amount LP token amount to withdraw.
+        @param to Receiver of the LP tokens and SUSHI rewards.
 
-********************\*\*\*********************/
-/********************\*********************
+**\*\*\*\***\*\*\*\***\*\*\*\***\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***/
+/**\*\*\*\***\*\*\*\***\*\*\*\***\***\*\*\*\***\*\*\*\***\*\*\*\***
 
 #harvestFromMasterChef
 
         @notice Harvests SUSHI from `MASTER_CHEF` MCV1 and pool `MASTER_PID` to this MCV2 contract.
         function
 
-**********\***********/
-/**********\*\*\*\***********
+\***\*\*\*\*\***\*\***\*\*\*\*\***/
+/\***\*\*\*\*\***\*\*\*\*\***\*\*\*\*\***
 #emergencyWithdraw
 
         @notice Withdraw without caring about rewards. EMERGENCY ONLY.
         @param pid The index of the pool. See `poolInfo`.
         @param to Receiver of the LP tokens.
 
-************\*\*************/
+\***\*\*\*\*\*\*\***\*\*\***\*\*\*\*\*\*\***/
